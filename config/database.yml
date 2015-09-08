@@ -23,4 +23,4 @@ test:
 
 production:
   <<: *default
-  database: db/rails_mecha-assist_development
+  database: db/rails_mecha-assist_test

@@ -1,0 +1,12 @@
+.when('/articles', {
+  templateUrl: "<%= asset_path('articles/index.html') %>",
+  controller: 'ArticlesIndexCtrl'
+})
+.when('/articles/:id', {
+  templateUrl: "<%= asset_path('articles/show.html') %>",
+  controller: 'ArticlesShowCtrl'
+})
+.when('/new_articles', {
+  templateUrl: "<%= asset_path('articles/new.html') %>",
+  controller: 'ArticlesNewCtrl'
+})
