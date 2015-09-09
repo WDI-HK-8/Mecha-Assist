@@ -28,6 +28,12 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+
+#devise token auth
+gem 'devise_token_auth'
+gem 'omniauth'
+
+
 #gems for translator
 gem 'chinese_pinyin'
 gem 'ruby-pinyin'

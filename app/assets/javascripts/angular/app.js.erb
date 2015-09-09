@@ -1,9 +1,10 @@
 'use strict'; // Make sure you don't have syntax errors
 
 // var app = angular.module('appName', ['oneDependency']);
-var app = angular.module('rails-mecha-assist', ['ngRoute']);
+var app = angular.module('rails-mecha-assist','ng-token-auth', ['ngRoute']);
+// do i need sqr brackets for 'ng-token-auth' in modules?
 
-app.config(['$routeProvider', function($routeProvider) {
+app.config(['$routeProvider','$authProvider', function($routeProvider) {
   // Configure Angular Routes
   $routeProvider.
     when('/', {
@@ -22,7 +23,17 @@ app.config(['$routeProvider', function($routeProvider) {
       templateUrl: "<%= asset_path('vocabs/vocabs.html') %>",
       controller: 'vocabCtrl'
     })
-   
+    .when('/signup', {
+       templateUrl: "<%= asset_path('auth/signup.html') %>",
+       controller: 'SignUpCtrl'
+    })
+
+   $authProvider.configure({
+      // By default, you only need to configure apiUrl
+      // Note that if you put a '/' at the end of the link, there will be errors when calling the api
+      apiUrl: 'http://localhost:3000'
+    })
+
 }]);
 
 
