@@ -19,8 +19,4 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: rails_mecha-assist_development
-
-production:
-  <<: *default
-  database: db/rails_mecha-assist_test
+  database: rails_mecha-assist_test
