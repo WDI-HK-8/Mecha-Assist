@@ -33,6 +33,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise_token_auth'
 gem 'omniauth'
 
+#rack cors cross origin resource sharing protects resources
+gem 'rack-cors', :require => 'rack/cors'
+
 
 #gems for translator
 gem 'chinese_pinyin'
