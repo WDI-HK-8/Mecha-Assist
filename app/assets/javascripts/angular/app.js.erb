@@ -1,12 +1,30 @@
-.when('/articles', {
-  templateUrl: "<%= asset_path('articles/index.html') %>",
-  controller: 'ArticlesIndexCtrl'
-})
-.when('/articles/:id', {
-  templateUrl: "<%= asset_path('articles/show.html') %>",
-  controller: 'ArticlesShowCtrl'
-})
-.when('/new_articles', {
-  templateUrl: "<%= asset_path('articles/new.html') %>",
-  controller: 'ArticlesNewCtrl'
-})
+'use strict'; // Make sure you don't have syntax errors
+
+// var app = angular.module('appName', ['oneDependency']);
+var app = angular.module('rails-mecha-assist', ['ngRoute']);
+
+app.config(['$routeProvider', function($routeProvider) {
+  // Configure Angular Routes
+  $routeProvider.
+    when('/', {
+      templateUrl: "<%= asset_path('static_pages/index.html') %>",
+      controller: 'StaticPagesCtrl'
+    })
+    .when('/articles', {
+      templateUrl: "<%= asset_path('articles/articles.html') %>",
+      controller: 'articleCtrl'
+    })
+    .when('/vocab', {
+      templateUrl: "<%= asset_path('vocabs/vocabs.html') %>",
+      controller: 'vocabIndexCtrl'
+    })
+    .when('/vocab/:id', {
+      templateUrl: "<%= asset_path('vocabs/vocabs.html') %>",
+      controller: 'vocabCtrl'
+    })
+   
+}]);
+
+
+//front end to link pages 
+
