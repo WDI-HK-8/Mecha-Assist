@@ -1,12 +1,9 @@
 <div class="container-fluid">
+
   <div class="row">
-
-     <a href="/#/signup">
-      <button class="btn btn-primary">Signup</button>
-     </a>
-
-      <button class="btn btn-danger" ng-click="logout()">Logout
-      </button>
+     <a href="/#/signup"><button class="btn btn-primary">Signup</button></a>
+      <button class="btn btn-danger" ng-click="logout()">Logout</button>
+  <div>
 
     <div ng-repeat="post in posts track by $index">
       <div class="page-header">
@@ -18,5 +15,4 @@
         </small>
       </div>
     </div>
-  </div>
 </div>
