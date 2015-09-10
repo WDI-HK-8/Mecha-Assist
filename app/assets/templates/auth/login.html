@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <h1>Sign Up</h1>
-    <form ng-submit="signup()" role="form" ng-init="loginForm = {}">
+    <h1>Log In</h1>
+    <form ng-submit="login()" role="form" ng-init="loginForm = {}">
       <div class="form-group">
         <label>Email</label>
         <input type="email" name="email" ng-model="loginForm.email" required="required" class="form-control" placeholder="Enter Email"/>
@@ -13,7 +13,7 @@
       </div>
 
 
-      <button type="submit" class="btn btn-primary btn-lg">Register</button>
+      <button type="submit" class="btn btn-primary btn-lg">Log In</button>
       <a href="/#/"><button class="btn btn-danger btn-lg">Back</button></a>
     </form>
   </div>
