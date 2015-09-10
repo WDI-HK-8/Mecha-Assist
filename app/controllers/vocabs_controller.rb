@@ -1,30 +1,33 @@
 class VocabsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
-    @vocabs = Vocab.all
+    @vocabs = current_user.vocabs.all
   end
 
   def create
-    @vocab = Vocab.new(vocab_params)
-    render json: { message: "400 Bad Request" }, status: :bad_request unless @vocab.save
-    render :show
+    if @vocab = current_user.vocabs.create(vocab_params)
+      render :show
+    else
+      render json: { message: "400 Bad Request" }, status: :bad_request
+    end
   end
 
   def update
-    @vocab = Vocab.find_by_id(params[:id])
+    @vocab = current_user.vocabs.find_by_id(params[:id])
 
     if @vocab.nil?
       render json: { message: "Cannot find your vocab" }, status: :not_found
     elsif @vocab.update(vocab_params)
       render :show
-    else 
+    else
       render json: {message: "Cannot find vocab"}, status: :return_false_no_id
     end
   end
- 
+
 
   def show
-    @vocab = Vocab.find_by_id(params[:id])
+    @vocab = current_user.vocabs.find_by_id(params[:id])
 
     if @vocab.nil?
       render json: { message: "Cannot find your vocab" }, status: :not_found
@@ -32,7 +35,7 @@ class VocabsController < ApplicationController
   end
 
   def destroy
-    @vocab = Vocab.find_by_id(params[:id])
+    @vocab = current_user.vocabs.find_by_id(params[:id])
 
     if @vocab.nil?
       render json: { message: "Cannot find your vocab"}, status: :not_found
@@ -46,6 +49,6 @@ class VocabsController < ApplicationController
   private
 
   def vocab_params
-    params.require(:vocab).permit(:chinese, :english, :pinyin) 
+    params.require(:vocab).permit(:chinese, :english, :pinyin)
   end
 end
