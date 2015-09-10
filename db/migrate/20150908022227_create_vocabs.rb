@@ -7,7 +7,7 @@ class CreateVocabs < ActiveRecord::Migration
       t.string :chinese
       t.string :pinyin
 
-      t.belongs_to :users
+      t.belongs_to :user
       t.timestamps null: false
     end
   end

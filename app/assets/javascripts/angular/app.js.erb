@@ -17,7 +17,7 @@ app.config(['$routeProvider','$authProvider', function($routeProvider) {
     })
     .when('/vocab', {
       templateUrl: "<%= asset_path('articles/vocabs.html') %>",
-      controller: 'vocabIndexCtrl'
+      controller: 'vocabCtrl'
     })
     .when('/vocab/:id', {
       templateUrl: "<%= asset_path('articles/vocabs.html') %>",
@@ -26,6 +26,10 @@ app.config(['$routeProvider','$authProvider', function($routeProvider) {
     .when('/signup', {
        templateUrl: "<%= asset_path('auth/signup.html') %>",
        controller: 'SignUpCtrl'
+    })
+    .when('/login', {
+       templateUrl: "<%= asset_path('auth/login.html') %>",
+       controller: 'LoginCtrl'
     })
 
    $authProvider.configure({
