@@ -43,4 +43,9 @@ class VocabsController < ApplicationController
     end
   end
 
+  private
+
+  def vocab_params
+    params.require(:vocab).permit(:chinese, :english, :pinyin) 
+  end
 end

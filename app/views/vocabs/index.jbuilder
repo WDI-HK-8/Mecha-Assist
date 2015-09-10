@@ -1,5 +1,5 @@
-json.array! @articles do |article|
-  json.id article.id
-  json.content article.content
-  json.created_at post.created_at
+json.array! @vocabs do |vocab|
+  json.id         vocab.id
+  json.content    vocab.content
+  json.created_at vocab.created_at
 end

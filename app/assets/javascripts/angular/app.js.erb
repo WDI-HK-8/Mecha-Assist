@@ -16,11 +16,11 @@ app.config(['$routeProvider','$authProvider', function($routeProvider) {
       controller: 'articleCtrl'
     })
     .when('/vocab', {
-      templateUrl: "<%= asset_path('vocabs/vocabs.html') %>",
+      templateUrl: "<%= asset_path('articles/vocabs.html') %>",
       controller: 'vocabIndexCtrl'
     })
     .when('/vocab/:id', {
-      templateUrl: "<%= asset_path('vocabs/vocabs.html') %>",
+      templateUrl: "<%= asset_path('articles/vocabs.html') %>",
       controller: 'vocabCtrl'
     })
     .when('/signup', {

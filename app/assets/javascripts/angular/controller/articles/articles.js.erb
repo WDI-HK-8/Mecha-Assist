@@ -1,0 +1,17 @@
+app.controller('articleCtrl', ['$scope', '$http', function($scope, $http){
+
+  var url = "<%= ENV['URL'] %>" || "http://localhost:3000";
+
+  $scope.annotate = {};
+  $scope.article = {};
+
+  $scope.article.create = function(){
+    var data = {
+      article: $scope.article
+    };
+
+    $http.post(url + '/articles', data).success(function(response){
+      console.log(response);
+    });
+  };
+}]);

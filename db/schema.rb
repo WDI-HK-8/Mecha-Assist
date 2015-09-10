@@ -42,6 +42,10 @@ ActiveRecord::Schema.define(version: 20150909014453) do
   add_index "users", ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
 
   create_table "vocabs", force: :cascade do |t|
+    t.string   "english"
+    t.string   "chinese"
+    t.string   "pinyin"
+    t.integer  "users_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
