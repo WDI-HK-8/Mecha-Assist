@@ -1,9 +1,22 @@
-app.controller('vocabCtrl', ['$scope', '$http', '$location', function($scope, $http, $location){
+app.controller('VocabsCtrl', ['$scope', '$http', '$location', function($scope, $http, $location){
 
   var url = "<%= ENV['URL'] %>" || "http://localhost:3000";
 
-  $http.get(url + '/articles').success(function(response){
+  $http.get(url + '/vocabs').success(function(response){
     console.log(response);
-    $scope.articles = response;
+    // $scope.vocabs = response;
+    $scope.vocabs = [
+      {
+        english: "person",
+        chinese: "人",
+        pinyin: "ren"
+      },
+      {
+        english: "person",
+        chinese: "人",
+        pinyin: "ren"
+      }
+    ];
+    
   });
 }]);
