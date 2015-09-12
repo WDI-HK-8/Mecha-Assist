@@ -2,35 +2,23 @@ app.controller('VocabsCtrl', ['$scope', '$http', '$location', function($scope, $
 
   var url = "<%= ENV['URL'] %>" || "http://localhost:3000";
 
-  $http.get(url + '/vocabs').success(function(response){
-    console.log(response);
-    // $scope.vocabs = response;
-    // $scope.vocabs = [
-    //   {
-    //     english: "person",
-    //     chinese: "人",
-    //     pinyin: "ren"
-    //   },
-    //   {
-    //     english: "person",
-    //     chinese: "人",
-    //     pinyin: "ren"
-    //   }
-    // ];
-
-  });
-
-  // var str = "test";
-
-  // var arrayOfStr = []
-
-  // arrayOfStr.push(str);
-
-  $scope.vocabsArr = [];
+  // $http.get(url + '/vocabs').success(function(response){
+  //   console.log(response);
+  // })
+    $scope.vocabsArr = [];
   $scope.submit = function(){
+    
     $scope.vocabsArr.push($scope.vocabs);
     $http.post(url + '/vocabs',$scope.vocabs).success(function(response){
       console.log(response);
     })
   }
+  $scope.delete = function(at) {
+  $scope.vocabsArr.splice(at, 1);
+    $http.delete(url + '/vocabs',$scope.vocabs).success(function(response){
+    console.log(response);
+    })
+  }
 }]);
+
+
