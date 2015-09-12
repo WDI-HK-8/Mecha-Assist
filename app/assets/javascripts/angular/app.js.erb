@@ -22,6 +22,14 @@ app.config(['$routeProvider','$authProvider', function($routeProvider, $authProv
        templateUrl: "<%= asset_path('vocabs/vocabs.html') %>",
        controller: 'VocabsCtrl'
     })
+    .when('/idioms', {
+       templateUrl: "<%= asset_path('vocabs/idioms.html') %>",
+       controller: 'IdiomsCtrl'
+    })
+      .when('/profile', {
+       templateUrl: "<%= asset_path('auth/editprofile.html') %>",
+       controller: 'ProfileCtrl'
+    })
 
   $authProvider.configure({
     // By default, you only need to configure apiUrl
