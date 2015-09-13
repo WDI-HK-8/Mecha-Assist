@@ -34,7 +34,7 @@
       <form ng-submit="submit()">
         <div class="form-group">
           <label>chinese</label>
-          <input type="text" class="form-control" placeholder="Enter chinese" ng-model="vocabs.chinese">
+          <input type="text" class="form-control" placeholder="Enter chinese characters" ng-model="vocabs.chinese">
         </div>
 
         <div class="form-group">
@@ -55,12 +55,12 @@
     <div class="col-xs-4">
 
       <div class="panel panel-default">
-        <div class="panel-heading">Your vocabulary</div>
-
+        <div class="panel-heading"><span>{{remaining()}} of {{vocabsArr.length}} Vocabulary remaining</span></div>
+      
         <div class="panel-body">
           <ul class="list-group">
             <li class="list-group-item" ng-repeat="vocab in vocabsArr">
-              <strong>{{ vocab.chinese }} ({{ vocab.pinyin }})</strong> | {{ vocab.english }} <button>Edit</button><button ng-click="delete($index)">Delete</button>
+              <strong>{{ vocab.chinese }} ({{ vocab.pinyin }})</strong> | {{ vocab.english }} <button ng-click="save()">{{buttonText}}</button><button ng-click="delete($index)">Delete</button>
             </li>
           </ul>
         </div>

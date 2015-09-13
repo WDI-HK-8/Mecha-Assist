@@ -1,24 +1,60 @@
-app.controller('VocabsCtrl', ['$scope', '$http', '$location', function($scope, $http, $location){
+app.controller('VocabsCtrl', ['$scope', '$http', '$location', '$watch', function($scope, $http, $location, $watch){
+
+// do i use $watch, or $watchCollection?
 
   var url = "<%= ENV['URL'] %>" || "http://localhost:3000";
 
   // $http.get(url + '/vocabs').success(function(response){
   //   console.log(response);
   // })
-    $scope.vocabsArr = [];
+  $scope.vocabsArr = [];
+
   $scope.submit = function(){
-    
     $scope.vocabsArr.push($scope.vocabs);
     $http.post(url + '/vocabs',$scope.vocabs).success(function(response){
       console.log(response);
-    })
-  }
+    });
+  };
+  //pushes new vocabs into the array
+
+
+  $scope.remaining = function() {
+      var count = 0;
+      angular.forEach($scope.vocabsArr, function(vocabArr){
+        count += vocabsArr ? 0 : 1;
+      });
+      return count;
+  };
+  //counts the number of vocab arrays 
+ 
+
   $scope.delete = function(at) {
   $scope.vocabsArr.splice(at, 1);
     $http.delete(url + '/vocabs',$scope.vocabs).success(function(response){
     console.log(response);
-    })
-  }
-}]);
+    });
+  };
+  //user deletes an array
+
+
+  $scope.update = function(){
+
+    $scope.toggle = true
+    $scope.$watch('toggle', function(){
+      $scope.toggleText = $scope.toggle ? 'Done!' : 'Edit';
+      if ($scope.toggle = 'Done!'){
+         $http.get(url + 'vocabs/:id', $scope.vocabs).success(function(response){console.log(response)});
+         $scope.vocabsArr.push($scope.vocabs);
+        else if ($scope.toggle = 'Edit'){
+           $http.patch(url + '/vocabs', $scope.vocabs).success(function(response){console.log(response)});
+        };
+      };
+    });
+  };
+
+//uses ng-bind. When the user clicks edit on vocab page, the 'edit' button turns into a 'done' button.
+//the back end array data is displayed on the input box. User modifies the pinyin, english or chinese, then clicks the done button to save modification on backend. 
+
+}])
 
 
