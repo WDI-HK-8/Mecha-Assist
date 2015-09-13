@@ -60,7 +60,7 @@
         <div class="panel-body">
           <ul class="list-group">
             <li class="list-group-item" ng-repeat="vocab in vocabsArr">
-              <strong>{{ vocab.chinese }} ({{ vocab.pinyin }})</strong> | {{ vocab.english }} <button ng-click="save()">{{buttonText}}</button><button ng-click="delete($index)">Delete</button>
+              <strong>{{ vocab.chinese }} ({{ vocab.pinyin }})</strong> | {{ vocab.english }} <button ng-click="toggle = !toggle">{{toggleText}}</button><button ng-click="delete($index)">Delete</button>
             </li>
           </ul>
         </div>
