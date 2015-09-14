@@ -10,6 +10,10 @@ app.config(['$routeProvider','$authProvider', function($routeProvider, $authProv
       templateUrl: "<%= asset_path('static_pages/index.html') %>",
       controller: 'StaticPagesCtrl'
     })
+    .when('/landing', {
+       templateUrl: "<%= asset_path('auth/landing.html') %>",
+       controller: 'ProfileCtrl'
+    })
     .when('/signup', {
        templateUrl: "<%= asset_path('auth/signup.html') %>",
        controller: 'SignUpCtrl'
@@ -39,7 +43,7 @@ app.config(['$routeProvider','$authProvider', function($routeProvider, $authProv
 
 }]);
 
-//front end to link pages 
+//front end to link pages
 
     // .when('/vocab', {
     //   templateUrl: "<%= asset_path('articles/vocabs.html') %>",
