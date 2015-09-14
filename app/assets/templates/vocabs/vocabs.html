@@ -55,12 +55,12 @@
     <div class="col-xs-4">
 
       <div class="panel panel-default">
-        <div class="panel-heading"><span>{{remaining()}} of {{vocabsArr.length}} Vocabulary remaining</span></div>
+        <div class="panel-heading"><span>Vocabulary</span></div>
       
         <div class="panel-body">
           <ul class="list-group">
-            <li class="list-group-item" ng-repeat="vocab in vocabsArr">
-              <strong>{{ vocab.chinese }} ({{ vocab.pinyin }})</strong> | {{ vocab.english }} <button ng-click="save()">{{buttonText}}</button><button ng-click="delete($index)">Delete</button>
+            <li class="list-group-item" ng-repeat="vocab in vocabsArr track by $index">
+              <strong>{{ vocab.chinese }} ({{ vocab.pinyin }})</strong> | {{ vocab.english }} <button ng-click="edit()">Edit</button><button ng-click="delete()">Delete</button>
             </li>
           </ul>
         </div>
