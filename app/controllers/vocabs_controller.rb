@@ -50,5 +50,6 @@ class VocabsController < ApplicationController
 
   def vocab_params
     params.require(:vocab).permit(:chinese, :english, :pinyin)
+    params.require(:user).permit(:image)
   end
 end

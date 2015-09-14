@@ -1,8 +1,8 @@
-app.controller('articleCtrl', ['$scope', '$http', function($scope, $http){
+app.controller('ArticleCtrl', ['$scope', '$http', function($scope, $http){
 
   var url = "<%= ENV['URL'] %>" || "http://localhost:3000";
 
-  $scope.annotate = {};
+  // $scope.annotate = {};
   $scope.article = {};
 
   $scope.article.create = function(){
@@ -14,6 +14,5 @@ app.controller('articleCtrl', ['$scope', '$http', function($scope, $http){
       console.log(response);
     });
   };
-}]);
 
-//an article is copied and pasted onto a form. The second form on the same page has english and annotations. 
+}]);
