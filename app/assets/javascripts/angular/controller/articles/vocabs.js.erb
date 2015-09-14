@@ -1,38 +1,45 @@
-app.controller('VocabsCtrl', ['$scope', '$http', '$location','$routeParams', function($scope, $http, $location, $routeParams) {
+app.controller('VocabsCtrl', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
   var url = "<%= ENV['URL'] %>" || "http://localhost:3000";
 
- 
+  $scope.form = {};
+  $scope.newVocab = {};
   $scope.vocabsArr = [];
 
-  $http.get(url + '/vocabs' + $routeParams.id).success(function(response){
-    $scope.vocabs = response;
+  // Get all the vocabs from the backend
+  $http.get(url + '/vocabs').success(function(response){
+    $scope.vocabsArr = response;
   });
 
-  $scope.submit = function() {
-    $scope.vocabsArr.push($scope.vocabs);
-    $http.post(url + '/vocabs', $scope.vocabs).success(function(response) {
+  // when click in the form to add, push to backend
+  // if ok, push into vocabsArr
+  $scope.form.create = function(){
+
+    var data = { vocab: $scope.newVocab };
+
+    if ($scope.newVocab.id) {
+      $http.patch(url + '/vocabs/' + $scope.newVocab.id, data).success(function(response){
         console.log(response);
-    });
+        $scope.newVocab = {};
+      });
+
+    } else {
+      $http.post(url + '/vocabs', data).success(function(response){
+        console.log(response);
+        $scope.vocabsArr.push($scope.newVocab);
+        $scope.newVocab = {};
+      });
+    }
   };
-  //pushes new vocabs into the array
 
-
-  $scope.delete = function(at) {
-    $scope.vocabsArr.splice(at, 1);
-    $http.delete(url + '/vocabs', $scope.vocabs).success(function(response) {
+  $scope.delete = function(arrayIndex, vocabId) {
+    $http.delete(url + '/vocabs/' + vocabId).success(function(response) {
       console.log(response);
+      $scope.vocabsArr.splice(arrayIndex, 1);
     });
   };
-  //user deletes an array
 
-
-  $scope.edit = function() {
-    $scope.vocabArr.push($scope.vocabs);
-    $http.patch(url + '/vocabs', $scope.vocabs).success(function(response) {
-      console.log(response);  
-    });
+  $scope.edit = function(arrayIndex) {
+    $scope.newVocab = $scope.vocabsArr[arrayIndex];
   };
 }])
-
-
