@@ -1,9 +1,38 @@
-app.controller('vocabCtrl', ['$scope', '$http', '$location', function($scope, $http, $location){
+app.controller('VocabsCtrl', ['$scope', '$http', '$location','$routeParams', function($scope, $http, $location, $routeParams) {
 
   var url = "<%= ENV['URL'] %>" || "http://localhost:3000";
 
-  $http.get(url + '/articles').success(function(response){
-    console.log(response);
-    $scope.articles = response;
+ 
+  $scope.vocabsArr = [];
+
+  $http.get(url + '/vocabs' + $routeParams.id).success(function(response){
+    $scope.vocabs = response;
   });
-}]);
+
+  $scope.submit = function() {
+    $scope.vocabsArr.push($scope.vocabs);
+    $http.post(url + '/vocabs', $scope.vocabs).success(function(response) {
+        console.log(response);
+    });
+  };
+  //pushes new vocabs into the array
+
+
+  $scope.delete = function(at) {
+    $scope.vocabsArr.splice(at, 1);
+    $http.delete(url + '/vocabs', $scope.vocabs).success(function(response) {
+      console.log(response);
+    });
+  };
+  //user deletes an array
+
+
+  $scope.edit = function() {
+    $scope.vocabArr.push($scope.vocabs);
+    $http.patch(url + '/vocabs', $scope.vocabs).success(function(response) {
+      console.log(response);  
+    });
+  };
+}])
+
+

@@ -2,7 +2,6 @@
 
 // var app = angular.module('appName', ['oneDependency']);
 var app = angular.module('rails-mecha-assist', ['ngRoute','ng-token-auth']);
-// do i need sqr brackets for 'ng-token-auth' in modules?
 
 app.config(['$routeProvider','$authProvider', function($routeProvider, $authProvider) {
   // Configure Angular Routes
@@ -19,20 +18,29 @@ app.config(['$routeProvider','$authProvider', function($routeProvider, $authProv
        templateUrl: "<%= asset_path('auth/login.html') %>",
        controller: 'LoginCtrl'
     })
-
-   $authProvider.configure({
-      // By default, you only need to configure apiUrl
-      // Note that if you put a '/' at the end of the link, there will be errors when calling the api
-      apiUrl: 'http://localhost:3000'
+     .when('/vocabs', {
+       templateUrl: "<%= asset_path('vocabs/vocabs.html') %>",
+       controller: 'VocabsCtrl'
     })
+    .when('/idioms', {
+       templateUrl: "<%= asset_path('vocabs/idioms.html') %>",
+       controller: 'IdiomsCtrl'
+    })
+      .when('/profile', {
+       templateUrl: "<%= asset_path('auth/editprofile.html') %>",
+       controller: 'ProfileCtrl'
+    })
+
+  $authProvider.configure({
+    // By default, you only need to configure apiUrl
+    // Note that if you put a '/' at the end of the link, there will be errors when calling the api
+    apiUrl: 'http://localhost:3000'
+  })
 
 }]);
 
 //front end to link pages 
-    // .when('/articles', {
-    //   templateUrl: "<%= asset_path('articles/articles.html') %>",
-    //   controller: 'articleCtrl'
-    // })
+
     // .when('/vocab', {
     //   templateUrl: "<%= asset_path('articles/vocabs.html') %>",
     //   controller: 'vocabCtrl'
