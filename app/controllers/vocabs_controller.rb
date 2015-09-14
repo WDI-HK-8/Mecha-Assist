@@ -40,7 +40,7 @@ class VocabsController < ApplicationController
     if @vocab.nil?
       render json: { message: "Cannot find your vocab"}, status: :not_found
     elsif @vocab.destroy
-      render json: { message: "Successfully deleted" }, status: :no_content
+      render json: { message: "Successfully deleted" }
     else
       render json: { message: "Unsuccessfully deleted" }, status: :bad_request
     end
