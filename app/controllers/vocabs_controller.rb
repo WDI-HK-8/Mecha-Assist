@@ -1,5 +1,5 @@
 class VocabsController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
   def index
     @vocabs = current_user.vocabs.all
@@ -44,6 +44,14 @@ class VocabsController < ApplicationController
     else
       render json: { message: "Unsuccessfully deleted" }, status: :bad_request
     end
+  end
+
+  def tradsim
+    # encoding: UTF-8
+    require 'tradsim'
+    input = params[:chinese]
+    output = Tradsim::toggle(input)
+    render json: { message: output }
   end
 
   private

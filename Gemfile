@@ -21,6 +21,7 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'chinese_pinyin'
 gem 'ruby-pinyin'
 gem 'bower'
+gem 'tradsim'
 
 group :development do
   gem "web-console"

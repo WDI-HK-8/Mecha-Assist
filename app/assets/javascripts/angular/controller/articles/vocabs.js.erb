@@ -42,4 +42,27 @@ app.controller('VocabsCtrl', ['$scope', '$http', '$location', function($scope, $
   $scope.edit = function(arrayIndex) {
     $scope.newVocab = $scope.vocabsArr[arrayIndex];
   };
+
+  var response = {
+    "message": "曾协助特首梁振英竞选的行会前成员张震远，继其经营的商交所被清盘、个人被颁令破产后，早前因拖欠前商交所"
+  }
+
+  $scope.article = function(){
+
+    var data = $scope.newArticle.chinese;
+
+    if ($scope.checkboxModel.value1 === true) {
+      console.log(data);
+      $http.get(url + '/tradsim?chinese=' + data).success(function(response){
+        console.log(response.message);
+        $scope.translated = response["message"];
+      })
+    }
+  }
+
+   $scope.checkboxModel = {
+       value1 : true,
+       value2 : 'YES'
+     };
+
 }])
