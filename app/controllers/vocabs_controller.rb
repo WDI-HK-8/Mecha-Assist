@@ -51,7 +51,9 @@ class VocabsController < ApplicationController
     require 'tradsim'
     input = params[:chinese]
     output = Tradsim::toggle(input)
-    render json: { message: output }
+    PinYin.of_string(output)
+
+    render json: { message: output.class }
   end
 
   private
