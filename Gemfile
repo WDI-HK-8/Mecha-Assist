@@ -22,6 +22,9 @@ gem 'chinese_pinyin'
 gem 'ruby-pinyin'
 gem 'bower'
 gem 'tradsim'
+gem 'google-api-client'
+gem 'curb'
+gem 'rseg'
 
 group :development do
   gem "web-console"

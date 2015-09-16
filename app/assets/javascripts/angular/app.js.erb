@@ -26,9 +26,9 @@ app.config(['$routeProvider','$authProvider', function($routeProvider, $authProv
        templateUrl: "<%= asset_path('vocabs/vocabs.html') %>",
        controller: 'VocabsCtrl'
     })
-    .when('/idioms', {
-       templateUrl: "<%= asset_path('vocabs/idioms.html') %>",
-       controller: 'IdiomsCtrl'
+    .when('/flashcards', {
+       templateUrl: "<%= asset_path('vocabs/flashcard.html') %>",
+       controller: 'FlashCardsCtrl'
     })
       .when('/profile', {
        templateUrl: "<%= asset_path('auth/editprofile.html') %>",
