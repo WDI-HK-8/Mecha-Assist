@@ -25,20 +25,27 @@
   </div><!-- /.container-fluid -->
 </nav>
 
+<div class="well well-lg center" ng-init="flashcard_clicked=false" ng-click="flashcard_clicked = !flashcard_clicked">
+  {{ vocabsArr[vocab_index].chinese }}
+  <div ng-show="flashcard_clicked">
+    {{ vocabsArr[vocab_index].pinyin }} |
+    {{ vocabsArr[vocab_index].english }}
+  </div>
+</div>
 <nav>
   <ul class="pagination">
     <li>
-      <a href="#" aria-label="Previous">
+      <a aria-label="Previous" ng-click="vocab_index = vocab_index - 1; flashcard_clicked=false" ng-init="vocab_index=0" >
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
-    <li><a href="#">{{currentVocab}}</a></li>
+    <li><a href="#">{{vocab_index+1}}</a></li>
     <li>
-      <a href="#" aria-label="Next">
+      <a aria-label="Next"
+        ng-click="vocab_index = vocab_index + 1; flashcard_clicked=false" disabled="{{vocab_index >= vocabsArr.length}}">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>
   </ul>
 </nav>
-<!-- www.hskflashcards.com
-https://github.com/chrisberkhout/npcr_for_anymemo/ -->
+
