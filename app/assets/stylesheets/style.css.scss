@@ -1,21 +1,33 @@
 body {
+  background-image: url(background4.jpg);
+  background-size: 100%;
+}
 
-background-image: url(background4.jpg);
-background-size: 100%;
+.title {
+  padding-bottom: 2em;
 }
 
 .myLogo {
   padding:5px;
 }
 
-h4 {
+.title1 {
+  padding-top: 1em;
+  color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 70px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center;
+}
 
+.title2 {
+  color: #7c795d; font-family: 'Trocchi', serif; font-size: 45px; font-weight: normal; line-height: 40px; margin: 0;
+  padding-top: 1em;
+  padding-left: 3em;
+}
+
+h4 {
   margin: 1em;
 }
 
 
 h5 {
-
   padding-right: 9em;
   padding-left: 9em;
 }
@@ -28,6 +40,11 @@ p {
 
 li {
   padding: 0.5em;
+}
+
+#buttons-login {
+  padding-left: 23em;
+  padding-top: 5em;
 }
 
 .impact {
@@ -59,8 +76,26 @@ label {
 }
 #landing {
   background-color: none;
+  background-size: 100%;
 
   #buttons-login {
     background-color: none;
   }
+}
+
+.checkbox2 {
+  padding-left:0;
+
+}
+
+btn.btn-default.submit1{
+  padding-top: 4em;
+}
+
+.transtext {
+  background-color: red;
+}
+
+.glyphicon {
+  padding: 3px
 }

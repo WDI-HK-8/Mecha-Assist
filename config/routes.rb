@@ -12,5 +12,7 @@ Rails.application.routes.draw do
   # get 'engchinesesimp' =>  'vocabs#engchinesesimp'
   # get 'easytrans' =>       'vocabs#easytrans'
   resources :vocabs, :users
+
+  post 'translate' => 'vocabs#translate'
 end
 

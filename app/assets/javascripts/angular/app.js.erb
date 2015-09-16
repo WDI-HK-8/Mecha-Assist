@@ -1,7 +1,7 @@
 'use strict'; // Make sure you don't have syntax errors
 
 // var app = angular.module('appName', ['oneDependency']);
-var app = angular.module('rails-mecha-assist', ['ngRoute','ng-token-auth']);
+var app = angular.module('rails-mecha-assist', ['ngRoute','ng-token-auth', 'ui.bootstrap']);
 
 app.config(['$routeProvider','$authProvider', function($routeProvider, $authProvider) {
   // Configure Angular Routes
@@ -28,11 +28,15 @@ app.config(['$routeProvider','$authProvider', function($routeProvider, $authProv
     })
     .when('/flashcards', {
        templateUrl: "<%= asset_path('vocabs/flashcard.html') %>",
-       controller: 'FlashCardsCtrl'
+       controller: 'VocabsCtrl'
     })
       .when('/profile', {
        templateUrl: "<%= asset_path('auth/editprofile.html') %>",
        controller: 'ProfileCtrl'
+    })
+      .when('/intro', {
+       templateUrl: "<%= asset_path('vocabs/intro.html') %>",
+       controller: 'VocabsCtrl'
     })
 
   $authProvider.configure({
@@ -42,15 +46,3 @@ app.config(['$routeProvider','$authProvider', function($routeProvider, $authProv
   })
 
 }]);
-
-//front end to link pages
-
-    // .when('/vocab', {
-    //   templateUrl: "<%= asset_path('articles/vocabs.html') %>",
-    //   controller: 'vocabCtrl'
-    // })
-    // .when('/vocab/:id', {
-    //   templateUrl: "<%= asset_path('articles/vocabs.html') %>",
-    //   controller: 'vocabCtrl'
-    // })
-

@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class VocabsController < ApplicationController
   # before_action :authenticate_user!
 
@@ -46,55 +48,33 @@ class VocabsController < ApplicationController
     end
   end
 
-  def tradsim
-    # encoding: UTF-8
+  def translate
+    traditional_chinese = params[:chinese]
+
+    # 1. get simplified version of chinese
     require 'tradsim'
-    input = params[:chinese]
-    output = Tradsim::toggle(input)
+    simplified_chinese = Tradsim::to_sim(traditional_chinese)
 
-    render json: { message: output.class }
-  end
+    # 2. segmenter ==> break into chinese words
+    sina_response = Curl.get("http://5.tbip.sinaapp.com/api.php?type=json&str=#{simplified_chinese}")
+    simplified_vocabs = sina_response.body
 
-#janx/ruby-pinyin
-  def pinyin1
-    # encoding: utf-8
+
+    # 3. add english translation and pinyin
     require 'ruby-pinyin'
-    input = params[:chinese]
-    output = PinYin.of_string(input)
+    @vocabs = []
+    reject_characters = [',', '。', '（',  '）',  '？', '』', '」', '，', '「', '『', '、']
+    JSON.parse(simplified_vocabs).each do |vocab|
+      @vocabs << {
+        chinese: vocab['word'],
+        pinyin:  PinYin.of_string(vocab['word']),
+        english: translate_google(vocab['word'])
+      } unless reject_characters.include?(vocab['word'])
+    end
 
-    render json: {message: output}
+    # send to frontend
+    render json: @vocabs.to_json
   end
-
- #flyerhzm/chinese_pinyin
-  def pinyin2
-    require 'chinese_pinyin'
-    input = params[:chinese]
-    output = Pinyin.t(input)
-
-    render json: {message: output}
-  end
-
-  def googtrans
-    apikey = 'XXXXXXXXXXXXXX'
-    result = Curl.get("https://www.googleapis.com/language/translate/v2?q=#{params[:chinese]}&target=en&key=#{apikey}")
-    # input = params[:chinese]
-    # binding.pry
-    # output = t(:en,:ch, input)
-    output = JSON.parse(result.body_str)
-    render json: {message: output["data"]["translations"][0]["translatedText"]}
-  end
-
-
-   def segment1
-    require 'rseg'
-    require 'rubygems'
-    input = params[:chinese]
-    output = Rseg.segment(input)
-
-    render json: {message: output}
-  end
-  # https://github.com/yzhang/rseg
-  # Please check the readme, the parsing/segmenting does every single character! Which means it just takes every charcter and pushes it into an array...
 
   private
 
@@ -102,7 +82,11 @@ class VocabsController < ApplicationController
     params.require(:vocab).permit(:chinese, :english, :pinyin)
   end
 
-  def encode
-
+  def translate_google(simplified)
+    apikey = 'XXXXXXXX'
+    result = Curl.get("https://www.googleapis.com/language/translate/v2?q=#{simplified}&target=en&key=#{apikey}")
+    response = JSON.parse(result.body_str)
+    return response["data"]["translations"][0]["translatedText"]
   end
+
 end
