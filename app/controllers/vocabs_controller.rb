@@ -1,5 +1,5 @@
 class VocabsController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
 
   def index
     @vocabs = current_user.vocabs.all
@@ -46,9 +46,63 @@ class VocabsController < ApplicationController
     end
   end
 
+  def tradsim
+    # encoding: UTF-8
+    require 'tradsim'
+    input = params[:chinese]
+    output = Tradsim::toggle(input)
+
+    render json: { message: output.class }
+  end
+
+#janx/ruby-pinyin
+  def pinyin1
+    # encoding: utf-8
+    require 'ruby-pinyin'
+    input = params[:chinese]
+    output = PinYin.of_string(input)
+
+    render json: {message: output}
+  end
+
+ #flyerhzm/chinese_pinyin
+  def pinyin2
+    require 'chinese_pinyin'
+    input = params[:chinese]
+    output = Pinyin.t(input)
+
+    render json: {message: output}
+  end
+
+  def googtrans
+    apikey = 'XXXXXXXXXXXXXX'
+    result = Curl.get("https://www.googleapis.com/language/translate/v2?q=#{params[:chinese]}&target=en&key=#{apikey}")
+    # input = params[:chinese]
+    # binding.pry
+    # output = t(:en,:ch, input)
+    output = JSON.parse(result.body_str)
+    render json: {message: output["data"]["translations"][0]["translatedText"]}
+  end
+
+
+   def segment1
+    require 'rseg'
+    require 'rubygems'
+    input = params[:chinese]
+    output = Rseg.segment(input)
+
+    render json: {message: output}
+  end
+  # https://github.com/yzhang/rseg
+  # Please check the readme, the parsing/segmenting does every single character! Which means it just takes every charcter and pushes it into an array...
+
   private
 
   def vocab_params
     params.require(:vocab).permit(:chinese, :english, :pinyin)
+  end
+
+  def encode
+
   end
 end
