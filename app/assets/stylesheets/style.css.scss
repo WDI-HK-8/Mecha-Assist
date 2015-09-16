@@ -1,39 +1,101 @@
- body {
-    font-family : arial;
-}
-.sidebar {
-    position : absolute;
-    top : 0;
-    left : -160px;;
-    transition : 100ms left;
-}
-#navigation-toggle {
-        position : absolute;
-        left : 160px;
-        background : rgba(3,159,244,.95);
-        color : white;
-        text-decoration : none;
-        padding : 20px;
-}
-.show {
-    left : 0;
-}
-.navigation {
-    list-style : none;
-    padding : 0;
-    margin : 0;
-}
-.navigation-items a {
-    display : block;
-    background-color : #444;
-    color : white;
-    line-height : 2em;
-    text-decoration : none;
-    padding : 10px 30px;
-    width : 100px;
-
-}
-.navigation-items a:hover {
-    background-color : #222;
+body {
+  background-image: url(background4.jpg);
+  background-size: 100%;
 }
 
+.title {
+  padding-bottom: 2em;
+}
+
+.myLogo {
+  padding:5px;
+}
+
+.title1 {
+  padding-top: 1em;
+  color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 70px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center;
+}
+
+.title2 {
+  color: #7c795d; font-family: 'Trocchi', serif; font-size: 45px; font-weight: normal; line-height: 40px; margin: 0;
+  padding-top: 1em;
+  padding-left: 3em;
+}
+
+h4 {
+  margin: 1em;
+}
+
+
+h5 {
+  padding-right: 9em;
+  padding-left: 9em;
+}
+
+p {
+
+  padding-top: 0.3em;
+  padding-bottom: 0.3em;
+}
+
+li {
+  padding: 0.5em;
+}
+
+#buttons-login {
+  padding-left: 23em;
+  padding-top: 5em;
+}
+
+.impact {
+  font-family: Impact;
+  font-style: none;
+  font-size: 700px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.col-xs-4.vocabpanel {
+
+   padding-top: 4em;
+   padding-left: 4em;
+}
+
+.col-xs-8.articalform {
+
+  padding-top: 3em;
+}
+
+.annotateform {
+
+  padding-top: 2em;
+}
+
+label {
+  font-size: 20px;
+}
+#landing {
+  background-color: none;
+  background-size: 100%;
+
+  #buttons-login {
+    background-color: none;
+  }
+}
+
+.checkbox2 {
+  padding-left:0;
+
+}
+
+btn.btn-default.submit1{
+  padding-top: 4em;
+}
+
+.transtext {
+  background-color: red;
+}
+
+.glyphicon {
+  padding: 3px
+}

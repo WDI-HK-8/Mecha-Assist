@@ -11,8 +11,6 @@ app.controller('VocabsCtrl', ['$scope', '$http', '$location', function($scope, $
     $scope.vocabsArr = response;
   });
 
-  // when click in the form to add, push to backend
-  // if ok, push into vocabsArr
   $scope.form.create = function(){
 
     var data = { vocab: $scope.newVocab };
@@ -22,7 +20,6 @@ app.controller('VocabsCtrl', ['$scope', '$http', '$location', function($scope, $
         console.log(response);
         $scope.newVocab = {};
       });
-
     } else {
       $http.post(url + '/vocabs', data).success(function(response){
         console.log(response);
@@ -42,4 +39,23 @@ app.controller('VocabsCtrl', ['$scope', '$http', '$location', function($scope, $
   $scope.edit = function(arrayIndex) {
     $scope.newVocab = $scope.vocabsArr[arrayIndex];
   };
+
+  // var response = {
+  //   "message": "曾协助特首梁振英竞选的行会前成员张震远，继其经营的商交所被清盘、个人被颁令破产后，早前因拖欠前商交所"
+  // }
+
+  $scope.article = function(){
+    var article = {
+      chinese: $scope.newArticle.chinese
+    }
+
+    $http.post(url + '/translate', article).success(function(translations){
+      $scope.translations = translations;
+    });
+  }
+
+  $scope.displayData = function(index){
+    $scope.newVocab = $scope.translations[index];
+  };
+
 }])

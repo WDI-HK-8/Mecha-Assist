@@ -1,0 +1,103 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      </button>
+      <a class="navbar-brand myLogo" href="/#/">
+      <img src="<%= asset_path('logo.png') %>" width="100" height="55" >
+      </a>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-left">
+        <li><a href="#/vocabs"><strong>Vocabulary</strong></a></li>
+        <li><a href="#/flashcards"><strong>Chinese Vocab Flash Cards</strong></a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="#/profile">Edit Profile <span class="sr-only">(current)</span></a></li>
+        <li><a href="#/">Log Out</a></li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </div>
+  <!-- /.container-fluid -->
+</nav>
+
+
+<div class="container-fluid" id="landing">
+  <div class="col-xs-5 col-md-2"></div>
+
+  <div class="col-xs-8 col-md-8">
+    <font color="black">
+
+    <div class=title>
+      <h3>
+        <strong>
+          <br>
+
+          <i>
+            <ins>
+              Improve your Chinese Literacy
+            </ins>
+          </i>
+          !
+        </br>
+      </strong>
+      </h3>
+    </div>
+
+           <h4>
+            Introduction
+           </h4>
+
+
+          <p>To learn how to read and write chinese characters, the most important thing is to understand each character's context, its meaning, and how it is associated with other characters.
+          </p>
+
+          <p>There are many words that are hard to memorize and require you to check to dictionary for pronounciation, pinyin, and english translation.
+          </p>
+
+          <p>Since China has adopted simplified characters for all formal writing, I recommend learning both traditional and simplified characters.
+          </p>
+
+          <p>Mecha-Assist's website tries to provide features to help facilitate your learning. Memorization happens not by brute force but by reasoning and practice.
+          </p>
+
+        <h4>
+          Vocabulary
+        </h4>
+
+          <ol>
+            <li>Insert chinese article of your choice.</li>
+            <%= image_tag 'article1.jpg', height: "25%", width: "25%" %>
+
+            <li>Choose to convert between traditional or simplified Chinese.</li>
+            <%= image_tag 'sim-vs-trad-chinese.png', height: "45%", width: "45%" %>
+
+            <li>Click the submit button to annote text with pinyin and get each character's english translation.</li>
+            <%= image_tag 'sample.gif', height:"45%", width:"45%" %>
+
+            <li>Hide the pinyin annotation. Try to read it again. </li>
+            <li>If you can't read it, double click the word to include in your vocabulary.</li>
+            <li> Click edit to add any additional english defintions or hints to help you memorize the word. </li>
+          </ol>
+
+        <h4>
+          Read & Test Idioms
+        </h4>
+
+        <ol>
+          <li>Vocabs are transfered to this page.</li>
+          <%= image_tag 'chinese_characters.png', height:"35%", width:"35%" %>
+          <li>Try to read each vocab out loud.</li>
+          <li>If you can't read it, click on the 'read out loud' button.</li>
+          <li>Try to guess the definition before checking the answer.</li>
+          <li>Click on the card to find the answer </li>
+          <%= image_tag 'compound.gif', height:"35%", width:"35%" %>
+        </ol>
+    </div>
+  <div class="col-xs-5 col-md-2"></div>
+  </div>
+</div>
