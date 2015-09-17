@@ -5,15 +5,20 @@ app.controller('VocabsCtrl', ['$scope', '$http', '$location', function($scope, $
   $scope.form = {};
   $scope.newVocab = {};
   $scope.vocabsArr = [];
+  $scope.english_text = '';
+  $scope.vocabs = [];
 
   // Get all the vocabs from the backend
   $http.get(url + '/vocabs').success(function(response){
+    console.log(response);
     $scope.vocabsArr = response;
   });
 
   $scope.form.create = function(){
 
     var data = { vocab: $scope.newVocab };
+
+    console.log('vocab', $scope.newVocab);
 
     if ($scope.newVocab.id) {
       $http.patch(url + '/vocabs/' + $scope.newVocab.id, data).success(function(response){
@@ -49,13 +54,17 @@ app.controller('VocabsCtrl', ['$scope', '$http', '$location', function($scope, $
       chinese: $scope.newArticle.chinese
     }
 
-    $http.post(url + '/translate', article).success(function(translations){
-      $scope.translations = translations;
+    $http.post(url + '/translate', article).success(function(response){
+      console.log(response.vocabs);
+      console.log(response.translation);
+
+      $scope.vocabs       = JSON.parse(response.vocabs);
+      $scope.english_text = response.translation;
     });
   }
 
   $scope.displayData = function(index){
-    $scope.newVocab = $scope.translations[index];
+    $scope.newVocab = $scope.vocabs[index];
   };
 
   // $scope.vocabincr = function(index) {

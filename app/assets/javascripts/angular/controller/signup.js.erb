@@ -5,6 +5,7 @@ $scope.signup = function () {
    then(function(resp) {
      // handle success response
      console.log(resp);
+     $scope.alert = { type: 'success', msg: 'Well done! You successfully Signed up' };
 
      // redirect back to root when registration succesfull
      $location.path('/');

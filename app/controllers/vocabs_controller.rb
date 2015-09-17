@@ -59,21 +59,26 @@ class VocabsController < ApplicationController
     sina_response = Curl.get("http://5.tbip.sinaapp.com/api.php?type=json&str=#{simplified_chinese}")
     simplified_vocabs = sina_response.body
 
-
     # 3. add english translation and pinyin
     require 'ruby-pinyin'
     @vocabs = []
-    reject_characters = [',', '。', '（',  '）',  '？', '』', '」', '，', '「', '『', '、']
+    reject_characters = [',', '。', '（',  '）',  '？', '』', '」', '，', '「', '『', '、', '~']
     JSON.parse(simplified_vocabs).each do |vocab|
       @vocabs << {
         chinese: vocab['word'],
-        pinyin:  PinYin.of_string(vocab['word']),
+        pinyin:  PinYin.of_string(vocab['word']).join(', '),
         english: translate_google(vocab['word'])
       } unless reject_characters.include?(vocab['word'])
     end
 
+    # Translate the whole text
+    translation = translate_google(traditional_chinese)
+
     # send to frontend
-    render json: @vocabs.to_json
+    render json: {
+      vocabs: @vocabs.to_json,
+      translation: translation
+    }
   end
 
   private
@@ -83,7 +88,7 @@ class VocabsController < ApplicationController
   end
 
   def translate_google(simplified)
-    apikey = ENV['AIzaSyDvXV4bN47jVG5_jd4bs_Z9RVGLrY9yr3g']
+    apikey = 'AIzaSyDvXV4bN47jVG5_jd4bs_Z9RVGLrY9yr3g';
     result = Curl.get("https://www.googleapis.com/language/translate/v2?q=#{simplified}&target=en&key=#{apikey}")
     response = JSON.parse(result.body_str)
     return response["data"]["translations"][0]["translatedText"]

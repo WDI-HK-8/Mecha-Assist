@@ -1,6 +1,6 @@
 body {
   background-image: url(background4.jpg);
-  background-size: 100%;
+  background-size: cover;
 }
 
 .title {
@@ -13,13 +13,24 @@ body {
 
 .title1 {
   padding-top: 1em;
-  color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 70px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center;
+  color: #111;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 70px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  line-height: 1;
+  text-align: center;
 }
 
 .title2 {
-  color: #7c795d; font-family: 'Trocchi', serif; font-size: 45px; font-weight: normal; line-height: 40px; margin: 0;
+  text-align: center;
+  color: #7c795d;
+  font-family: 'Trocchi', serif;
+  font-size: 45px;
+  font-weight: normal;
+  line-height: 40px;
+  margin: 0;
   padding-top: 1em;
-  padding-left: 4em;
 }
 
 h4 {
@@ -43,8 +54,8 @@ li {
 }
 
 #buttons-login {
-  padding-left: 23em;
   padding-top: 5em;
+  text-align: center;
 }
 
 .impact {
@@ -56,13 +67,11 @@ li {
 }
 
 .col-xs-4.vocabpanel {
-
    padding-top: 4em;
    padding-left: 4em;
 }
 
 .col-xs-8.articalform {
-
   padding-top: 3em;
 }
 
@@ -85,7 +94,6 @@ label {
 
 .checkbox2 {
   padding-left:0;
-
 }
 
 btn.btn-default.submit1{
