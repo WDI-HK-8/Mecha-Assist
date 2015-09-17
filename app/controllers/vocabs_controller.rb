@@ -83,7 +83,7 @@ class VocabsController < ApplicationController
   end
 
   def translate_google(simplified)
-    apikey = ENV['APIKEY']
+    apikey = ENV['AIzaSyDvXV4bN47jVG5_jd4bs_Z9RVGLrY9yr3g']
     result = Curl.get("https://www.googleapis.com/language/translate/v2?q=#{simplified}&target=en&key=#{apikey}")
     response = JSON.parse(result.body_str)
     return response["data"]["translations"][0]["translatedText"]
