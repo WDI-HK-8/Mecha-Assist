@@ -1,5 +1,5 @@
 body {
-  background-image: url(background4.jpg);
+  background-image: image-url("background4.jpg");
   background-size: 100%;
 }
 
@@ -19,7 +19,7 @@ body {
 .title2 {
   color: #7c795d; font-family: 'Trocchi', serif; font-size: 45px; font-weight: normal; line-height: 40px; margin: 0;
   padding-top: 1em;
-  padding-left: 4em;
+  padding-left: 12em;
 }
 
 h4 {
@@ -80,6 +80,7 @@ label {
 
   #buttons-login {
     background-color: none;
+    padding-left: 40em;
   }
 }
 
